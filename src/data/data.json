@@ -1,10 +1,10 @@
 {
   "Header": {
-    "title": "Frankie's Bakery",
-    "paragraph": "Bread, Cookies, Pastries!"
+    "title": "Asistente Virtual GI",
+    "paragraph": "Dirección General de Tráfico"
   },
   "About": {
-    "paragraph": "I'm Frankie G Riviera, This is a website for a fictional bakery that is used to demonstrate technological scenarios using Microsoft Azure."
+    "paragraph": "Este proyecto tiene como objetivo desarrollar un asistente virtual basado en IA para GI, capaz de automatizar la generación de boletines informativos en múltiples formatos (texto, video e imágenes) y explorar las capacidades de las herramientas de IA Generativa. El proyecto busca reducir significativamente la carga de trabajo administrativa de los equipos y proporcionar una evaluación práctica de las tecnologías de IA más recientes."
   },
   "Apphostingguide": {
     "paragraph": "The Azure Application Hosting Guide brings clarity to individuals, startups and businesses to help them navigate the complex world of application hosting in Azure. With so many offerings it can be challenging to understand the pros, cons and ideal scenarios for each service. This guide is your solution",
