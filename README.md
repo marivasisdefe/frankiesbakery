@@ -4,7 +4,7 @@ Using a react template for Frankie's Bakery
 
 
 ---NOTE:
-Frankie's Bakery is a fictional business created for demonstrative purposes only
+Frankie's Bakery is a fictional business created for demonstrative purposes only , cambio tonto
 
 
 ---WEBSITE TEMPLATE---
