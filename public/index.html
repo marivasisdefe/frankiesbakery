@@ -59,6 +59,19 @@
       padding-left: 20px;
       max-width: 50%;
     }
+    .chat-panel {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .chat-panel img {
+      max-width: 50%;
+      height: auto;
+    }
+    .chat-panel-content {
+      padding-left: 20px;
+      max-width: 50%;
+    }
   </style>
 </head>
 
@@ -122,16 +135,19 @@
   </script>
 
   <!-- Nueva plantilla Chat with Azure ML -->
-  <div class="container">
-    <h2>Chat with Azure ML</h2>
+  <div class="container chat-panel">
+    <img src="img/pexels-agk42-2599244.jpg" alt="Chat with Azure ML Image">
+    <div class="chat-panel-content">
+      <h2>Chat with Azure ML</h2>
 
-    <div id="chatbox">
-      <p class="bot-message"><strong>Bot:</strong> Hello! I'm here to answer your questions. Just start typing below!</p>
-    </div>
+      <div id="chatbox">
+        <p class="bot-message"><strong>Bot:</strong> Hello! I'm here to answer your questions. Just start typing below!</p>
+      </div>
 
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Type your message here...">
-      <button onclick="sendMessage()">Send</button>
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
     </div>
   </div>
 
