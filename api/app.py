@@ -30,5 +30,11 @@ def chat():
         bot_response = f"Error: {e}"
     return jsonify({"response": bot_response})
 
+# Endpoint de prueba para verificar la variable de entorno
+@app.route("/api/test-env")
+def test_env():
+    return jsonify({"AZURE_FOUNDARY_KEY": os.environ.get("AZURE_FOUNDARY_KEY")})
+#  eliminar este endpoint
+
 if __name__ == "__main__":
     app.run(debug=True)
