@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, render_template
 import requests
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../public")
 
 # API Key segura desde variable de entorno
 API_KEY = os.getenv("AZURE_FOUNDARY_KEY")
