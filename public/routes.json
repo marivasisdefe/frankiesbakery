@@ -3,7 +3,7 @@
   "routes": [
     {
       "route": "/api/chat",
-      "allowedMethods": ["GET", "POST"]
+      "allowedMethods": ["POST"]
     }
   ]
 }
