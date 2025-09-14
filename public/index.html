@@ -146,5 +146,51 @@
       }
     });
   </script>
+  <!-- Bloque Generar Boletín -->
+<div class="container chat-panel" style="margin-top: 40px;">
+  <img src="img/boletin.png" alt="Generar Boletín Image">
+  <div class="chat-panel-content">
+    <h2>Generar Boletín</h2>
+    <p>Descarga un boletín en Word con la última conversación del chat.</p>
+    <button onclick="generateBoletin()">Descargar Boletín</button>
+  </div>
+</div>
+
+<script>
+  async function generateBoletin() {
+    // Obtener la última respuesta del chat
+    const chatbox = document.getElementById("chatbox");
+    const lastBotMessage = chatbox.querySelector(".bot-message:last-of-type");
+    const chatContent = lastBotMessage ? lastBotMessage.innerText.replace("Bot: ", "") : "Boletín vacío";
+
+    try {
+      const response = await fetch("/api/generateword", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title: "Boletín de Conversación",
+          author: "Usuario",
+          content: chatContent
+        })
+      });
+
+      if (!response.ok) throw new Error("Error HTTP " + response.status);
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "boletin.docx";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+
+    } catch (error) {
+      console.error(error);
+      alert("Error al generar el boletín.");
+    }
+  }
+</script>
 </body>
 </html>
