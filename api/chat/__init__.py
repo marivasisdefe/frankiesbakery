@@ -5,7 +5,7 @@ import os
 import json
 
 API_KEY = os.getenv("AZURE_FOUNDARY_KEY")
-ENDPOINT_URL = "https://plmoros-1958-evlzk.westeurope.inference.ml.azure.com/score"
+ENDPOINT_URL = "https://plmoros-1958-mobmq.westeurope.inference.ml.azure.com/score"  
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Procesando solicitud en /api/chat")
