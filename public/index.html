@@ -277,22 +277,32 @@
 
 
 
-  <!-- Bloque Generar Boletín -->
+<!-- Bloque Generar Boletín -->
 <div class="container chat-panel" style="margin-top: 40px;">
   <img src="img/boletin.jpg" alt="Generar Boletín Image">
   <div class="chat-panel-content">
     <h2>Generar Boletín</h2>
-    <p>Descarga un boletín en Word con la última conversación del chat.</p>
+    <p>Descarga un boletín en Word con todas las respuestas del chat.</p>
     <button onclick="generateBoletin()">Descargar Boletín</button>
   </div>
 </div>
 
 <script>
   async function generateBoletin() {
-    // Obtener la última respuesta del chat
     const chatbox = document.getElementById("chatbox");
-    const lastBotMessage = chatbox.querySelector(".bot-message:last-of-type");
-    const chatContent = lastBotMessage ? lastBotMessage.innerText.replace("Bot: ", "") : "Boletín vacío";
+    const botMessages = chatbox.querySelectorAll(".bot-message");
+
+    if (botMessages.length === 0) {
+      alert("No hay contenido del bot para generar el boletín.");
+      return;
+    }
+
+    // Concatenar todas las respuestas del bot
+    let chatContent = "";
+    botMessages.forEach(msg => {
+      let text = msg.innerText.replace("Bot:", "").trim();
+      chatContent += text + "\n\n";
+    });
 
     try {
       const response = await fetch("/api/generateword", {
@@ -323,5 +333,7 @@
     }
   }
 </script>
+
+
 </body>
 </html>
