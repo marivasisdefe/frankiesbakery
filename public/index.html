@@ -266,17 +266,6 @@
 </script>
 
 
-    // Enviar con Enter
-    document.getElementById("userInput").addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        sendMessage();
-      }
-    });
-  </script>
-
-
-
 <!-- Bloque Generar Boletín -->
 <div class="container chat-panel" style="margin-top: 40px;">
   <img src="img/boletin.jpg" alt="Generar Boletín Image">
@@ -334,6 +323,104 @@
   }
 </script>
 
+<!-- Bloque Chat 2 independiente -->
+<div class="container chat-panel" style="margin-top: 40px;">
+  <img src="img/chat_boletin.jpg" alt="Chat con Azure2 Image">
+  <div class="chat-panel-content">
+    <h2>Pregunta a Boletines (Azure2)</h2>
+    <div id="chatbox2" class="chatbox">
+      <div class="bot-message">
+        <strong>Bot:</strong> 👋 Hola, soy tu asistente <b>Boletines Azure2</b>.<br><br>
+        📌 <b>Cómo funciono:</b><br>
+        - Respondo basándome en los <b>orígenes de datos</b> disponibles.<br>
+        - Siempre sigo el orden de prioridad establecido.<br>
+        - Para obtener información, indica el <b>nombre exacto</b> del origen.<br><br>
+        ✨ <b>Orígenes de datos disponibles:</b><br>
+        1️⃣ 📄 Documentos internos — prioridad alta.<br>
+        2️⃣ 🧠 Conocimiento general del modelo — solo si no hay documentos.<br>
+        3️⃣ 🌐 Fuentes externas vía internet — únicamente de organismos oficiales.<br>
+      </div>
+    </div>
+    <div class="input-area">
+      <input type="text" id="userInput2" placeholder="Escribe tu mensaje aquí..." />
+      <button id="sendBtn2" onclick="sendMessage2()">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Estilos independientes para el segundo chat */
+  #userInput2 {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  #sendBtn2 {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  #sendBtn2:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
+</style>
+
+<script>
+  // Función independiente para el chat 2
+  async function sendMessage2() {
+    const input = document.getElementById("userInput2");
+    const sendBtn = document.getElementById("sendBtn2");
+    const chatbox = document.getElementById("chatbox2");
+    const userInput = input.value.trim();
+    if (!userInput) return;
+
+    chatbox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userInput}</div>`;
+    input.value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    sendBtn.disabled = true;
+    const typingMsg = document.createElement("div");
+    typingMsg.className = "typing";
+    typingMsg.id = "typing2";
+    typingMsg.innerText = "Bot está escribiendo...";
+    chatbox.appendChild(typingMsg);
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    try {
+      const response = await fetch("/api/chat2", { // Endpoint independiente
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput })
+      });
+
+      if (!response.ok) throw new Error("Error HTTP " + response.status);
+
+      const data = await response.json();
+      document.getElementById("typing2")?.remove();
+      chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong><br>${data.response}</div>`;
+    } catch (error) {
+      console.error(error);
+      document.getElementById("typing2")?.remove();
+      chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ❌ Error al conectar con el servidor.</div>`;
+    } finally {
+      sendBtn.disabled = false;
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+  }
+
+  // Enviar con Enter
+  document.getElementById("userInput2").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendMessage2();
+    }
+  });
+</script>
 
 </body>
 </html>
