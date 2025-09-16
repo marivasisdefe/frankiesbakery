@@ -89,7 +89,18 @@
     <div class="chat-panel-content">
       <h2>Pregunta a Boletines</h2>
       <div id="chatbox" class="chatbox">
-        <div class="bot-message"><strong>Bot:</strong> ¡Hola! Pregúntame lo que quieras.</div>
+        <div class="bot-message">
+          <strong>Bot:</strong> 👋 Hola, soy tu asistente de <b>Boletines</b>.<br><br>
+          📌 <b>Cómo funciono:</b><br>
+          - Genero <b>boletines informativos</b> en secciones fijas (con emojis y listas).<br>
+          - Solo uso la información disponible en <code>contexts</code>.<br>
+          - Para obtener una sección, debes <b>preguntar con su nombre exacto</b>.<br><br>
+          ✨ <b>Ejemplos:</b><br>
+          - "Genera un boletín completo"<br>
+          - "Dame la sección Problemas abiertos"<br>
+          - "Muéstrame Resumen Ejecutivo"<br>
+          - "Quiero solo Fechas clave"<br>
+        </div>
       </div>
       <div class="input-area">
         <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." />
@@ -107,6 +118,7 @@
       overflow-y: auto;
       background-color: #fafafa;
       margin-bottom: 10px;
+      font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
     }
     .user-message, .bot-message {
       margin: 8px 0;
@@ -192,7 +204,7 @@
         // Eliminar "Bot escribiendo..."
         document.getElementById("typing")?.remove();
 
-        // Mostrar respuesta del bot
+        // Mostrar respuesta del bot con emojis y formato
         chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ${data.response}</div>`;
       } catch (error) {
         console.error(error);
