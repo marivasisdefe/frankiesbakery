@@ -83,170 +83,188 @@
     </div>
   </div>
 
-    <!-- Chat con Azure -->
-  <div class="container chat-panel">
-    <img src="img/robot.jpg" alt="Chat with Azure Image">
-    <div class="chat-panel-content">
-      <h2>Pregunta a Boletines</h2>
-      <div id="chatbox" class="chatbox">
-        <div class="bot-message">
-          <strong>Bot:</strong> 👋 Hola, soy tu asistente de <b>Boletines</b>.<br><br>
-          📌 <b>Cómo funciono:</b><br>
-          - Genero <b>boletines informativos</b> en secciones fijas (con emojis y listas).<br>
-          - Solo uso la información disponible en <code>contexts</code>.<br>
-          - Para obtener una sección, debes <b>preguntar con su nombre exacto</b>.<br><br>
-          ✨ <b>Ejemplos:</b><br>
-          - "Genera un boletín completo"<br>
-          - "Dame la sección Problemas abiertos"<br>
-          - "Muéstrame Resumen Ejecutivo"<br>
-          - "Quiero solo Fechas clave"<br>
-        </div>
-      </div>
-      <div class="input-area">
-        <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." />
-        <button id="sendBtn" onclick="sendMessage()">Enviar</button>
+  <!-- Chat con Azure -->
+<div class="container chat-panel">
+  <img src="img/robot.jpg" alt="Chat with Azure Image">
+  <div class="chat-panel-content">
+    <h2>Pregunta a Boletines</h2>
+    <div id="chatbox" class="chatbox">
+      <div class="bot-message">
+        <strong>Bot:</strong> 👋 Hola, soy tu asistente de <b>Boletines</b>.<br><br>
+        📌 <b>Cómo funciono:</b><br>
+        - Genero <b>boletines informativos</b> en secciones fijas (con emojis y listas).<br>
+        - Solo uso la información disponible en <code>contexts</code>.<br>
+        - Para obtener una sección, debes <b>preguntar con su nombre exacto</b>.<br><br>
+        ✨ <b>Secciones disponibles:</b><br>
+        - 📰 TITULAR<br>
+        - 📌 RESUMEN EJECUTIVO<br>
+        - 🍩 RECUENTO DE PROYECTOS<br>
+        - 📌 INFORMACIÓN GENERAL<br>
+        - ✅ PROBLEMAS SOLUCIONADOS<br>
+        - ❗ PROBLEMAS ABIERTOS<br>
+        - 🚀 SUBIDAS PROGRAMADAS<br>
+        - 📅 FECHAS CLAVE<br>
+        - 🆕 LANZAMIENTOS Y ARRANQUES<br>
+        - 🧱 ARQUITECTURA<br>
+        - 🗂️ METADATOS<br>
+        - 🔚 CONCLUSIÓN<br>
       </div>
     </div>
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." />
+      <button id="sendBtn" onclick="sendMessage()">Enviar</button>
+    </div>
   </div>
+</div>
 
-  <style>
-    .chatbox {
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      padding: 10px;
-      height: 350px;
-      overflow-y: auto;
-      background-color: #fafafa;
-      margin-bottom: 10px;
-      font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
-    }
-    .user-message, .bot-message {
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 12px;
-      max-width: 80%;
-      clear: both;
-      white-space: pre-wrap;
-    }
-    .user-message {
-      background-color: #d1ecf1;
-      float: right;
-      text-align: right;
-    }
-    .bot-message {
-      background-color: #f8d7da;
-      float: left;
-      text-align: left;
-    }
-    .typing {
-      font-style: italic;
-      color: #777;
-      margin: 5px 0;
-    }
-    .input-area {
-      display: flex;
-      gap: 5px;
-    }
-    #userInput {
-      flex: 1;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    #sendBtn {
-      padding: 8px 15px;
-      border: none;
-      border-radius: 8px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    }
-    #sendBtn:disabled {
-      background-color: #aaa;
-      cursor: not-allowed;
-    }
-    /* Estilo de secciones y listas en la respuesta del bot */
-    .bot-message h3 {
-      margin: 10px 0 5px;
-      color: #b22222; /* color rojo para títulos */
-    }
-    .bot-message ul {
-      margin: 5px 0 10px 20px;
-      padding: 0;
-    }
-    .bot-message li {
-      margin-bottom: 5px;
-    }
-  </style>
+<style>
+  .chatbox {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    height: 350px;
+    overflow-y: auto;
+    background-color: #fafafa;
+    margin-bottom: 10px;
+    font-family: 'Segoe UI Emoji', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+  }
+  .user-message, .bot-message {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 80%;
+    clear: both;
+    white-space: pre-wrap;
+  }
+  .user-message {
+    background-color: #d1ecf1;
+    float: right;
+    text-align: right;
+  }
+  .bot-message {
+    background-color: #f8d7da;
+    float: left;
+    text-align: left;
+  }
+  .typing {
+    font-style: italic;
+    color: #777;
+    margin: 5px 0;
+  }
+  .input-area {
+    display: flex;
+    gap: 5px;
+  }
+  #userInput {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  #sendBtn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  #sendBtn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+  }
 
-  <script>
-    // Función para transformar el texto plano del boletín en HTML
-    function formatBotResponse(text) {
-      let html = text;
+  /* Estilo de secciones y listas en la respuesta del bot */
+  .bot-message h3 {
+    margin: 10px 0 5px;
+    color: #b22222; /* color rojo para títulos */
+  }
+  .bot-message ul {
+    margin: 5px 0 10px 20px;
+    padding: 0;
+  }
+  .bot-message li {
+    margin-bottom: 5px;
+  }
+</style>
 
-      // Convertir títulos de sección === SECCIÓN === en h3
-      html = html.replace(/===\s*(.*?)\s*===/g, '<h3>📌 $1</h3>');
+<script>
+  // Función para transformar el texto plano del boletín en HTML
+  function formatBotResponse(text) {
+    let html = text;
 
-      // Convertir guiones - en listas
-      // Primero envolvemos todos los ítems consecutivos en <ul>
-      html = html.replace(/(?:<h3>.*?<\/h3>\s*)?((?:- .*?(?:\n|$))+)/gs, function(match, group1) {
-        const items = group1.trim().split(/\n/).map(i => i.replace(/^- /, '').trim());
-        return '<ul>' + items.map(i => `<li>${i}</li>`).join('') + '</ul>';
+    // Convertir títulos de sección === TEXTO === en h3
+    html = html.replace(/===\s*(.*?)\s*===/g, '<h3>📌 $1</h3>');
+
+    // Detectar líneas que empiezan con "-" o "Área X:" y envolverlas en <li>
+    html = html.replace(/^(?:- |Área \d+: )(.*)$/gm, '<li>$1</li>');
+
+    // Agrupar consecutivos <li> en <ul>
+    html = html.replace(/(<li>.*<\/li>(\n)?)+/gs, match => `<ul>${match.replace(/\n/g,'')}</ul>`);
+
+    // Mantener saltos de línea fuera de listas
+    html = html.replace(/\n/g, "<br>");
+
+    return html;
+  }
+
+  async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const chatbox = document.getElementById("chatbox");
+    const userInput = input.value.trim();
+
+    if (!userInput) return;
+
+    // Mostrar mensaje del usuario
+    chatbox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userInput}</div>`;
+    input.value = "";
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    // Desactivar botón y mostrar "Bot escribiendo..."
+    sendBtn.disabled = true;
+    const typingMsg = document.createElement("div");
+    typingMsg.className = "typing";
+    typingMsg.id = "typing";
+    typingMsg.innerText = "Bot está escribiendo...";
+    chatbox.appendChild(typingMsg);
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput })
       });
 
-      // Mantener saltos de línea restantes
-      html = html.replace(/\n/g, "<br>");
+      if (!response.ok) throw new Error("Error HTTP " + response.status);
 
-      return html;
-    }
+      const data = await response.json();
 
-    async function sendMessage() {
-      const input = document.getElementById("userInput");
-      const sendBtn = document.getElementById("sendBtn");
-      const chatbox = document.getElementById("chatbox");
-      const userInput = input.value.trim();
+      // Eliminar "Bot escribiendo..."
+      document.getElementById("typing")?.remove();
 
-      if (!userInput) return;
-
-      // Mostrar mensaje del usuario
-      chatbox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userInput}</div>`;
-      input.value = "";
+      // Mostrar respuesta del bot formateada
+      chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong><br>${formatBotResponse(data.response)}</div>`;
+    } catch (error) {
+      console.error(error);
+      document.getElementById("typing")?.remove();
+      chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ❌ Error al conectar con el servidor.</div>`;
+    } finally {
+      sendBtn.disabled = false;
       chatbox.scrollTop = chatbox.scrollHeight;
-
-      // Desactivar botón y mostrar "Bot escribiendo..."
-      sendBtn.disabled = true;
-      const typingMsg = document.createElement("div");
-      typingMsg.className = "typing";
-      typingMsg.id = "typing";
-      typingMsg.innerText = "Bot está escribiendo...";
-      chatbox.appendChild(typingMsg);
-      chatbox.scrollTop = chatbox.scrollHeight;
-
-      try {
-        const response = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: userInput })
-        });
-
-        if (!response.ok) throw new Error("Error HTTP " + response.status);
-
-        const data = await response.json();
-
-        // Eliminar "Bot escribiendo..."
-        document.getElementById("typing")?.remove();
-
-        // Mostrar respuesta del bot formateada
-        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong><br>${formatBotResponse(data.response)}</div>`;
-      } catch (error) {
-        console.error(error);
-        document.getElementById("typing")?.remove();
-        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ❌ Error al conectar con el servidor.</div>`;
-      } finally {
-        sendBtn.disabled = false;
-        chatbox.scrollTop = chatbox.scrollHeight;
-      }
     }
+  }
+
+  // Enviar con Enter
+  document.getElementById("userInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      sendMessage();
+    }
+  });
+</script>
+
 
     // Enviar con Enter
     document.getElementById("userInput").addEventListener("keydown", function (event) {
@@ -256,6 +274,7 @@
       }
     });
   </script>
+
 
 
   <!-- Bloque Generar Boletín -->
