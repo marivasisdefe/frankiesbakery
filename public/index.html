@@ -83,39 +83,100 @@
     </div>
   </div>
 
-  <!-- Chat con Azure -->
+    <!-- Chat con Azure -->
   <div class="container chat-panel">
-    <img src="img/robot.jpg"  alt="Chat with Azure Image">
+    <img src="img/robot.jpg" alt="Chat with Azure Image">
     <div class="chat-panel-content">
       <h2>Pregunta a Boletines</h2>
-      <div id="chatbox">
-        <p class="bot-message"><strong>Bot:</strong> ¡Hola! Pregúntame lo que quieras.</p>
+      <div id="chatbox" class="chatbox">
+        <div class="bot-message"><strong>Bot:</strong> ¡Hola! Pregúntame lo que quieras.</div>
       </div>
       <div class="input-area">
-        <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
-        <button onclick="sendMessage()">Enviar</button>
+        <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." />
+        <button id="sendBtn" onclick="sendMessage()">Enviar</button>
       </div>
     </div>
   </div>
 
-  <script>
-    function processFiles() {
-      document.getElementById('spinner').style.display = 'block';
-      document.getElementById('process-status').innerHTML = '';
-      fetch('/process_files', { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('spinner').style.display = 'none';
-          document.getElementById('process-status').innerHTML = data.status;
-        });
+  <style>
+    .chatbox {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      background-color: #fafafa;
+      margin-bottom: 10px;
     }
+    .user-message, .bot-message {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 12px;
+      max-width: 80%;
+      clear: both;
+      white-space: pre-wrap;
+    }
+    .user-message {
+      background-color: #d1ecf1;
+      float: right;
+      text-align: right;
+    }
+    .bot-message {
+      background-color: #f8d7da;
+      float: left;
+      text-align: left;
+    }
+    .typing {
+      font-style: italic;
+      color: #777;
+      margin: 5px 0;
+    }
+    .input-area {
+      display: flex;
+      gap: 5px;
+    }
+    #userInput {
+      flex: 1;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    #sendBtn {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    #sendBtn:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+  </style>
 
+  <script>
     async function sendMessage() {
-      const userInput = document.getElementById("userInput").value;
-      if (userInput.trim() === "") return;
-
+      const input = document.getElementById("userInput");
+      const sendBtn = document.getElementById("sendBtn");
       const chatbox = document.getElementById("chatbox");
-      chatbox.innerHTML += `<p class="user-message"><strong>Tú:</strong> ${userInput}</p>`;
+      const userInput = input.value.trim();
+
+      if (!userInput) return;
+
+      // Mostrar mensaje del usuario
+      chatbox.innerHTML += `<div class="user-message"><strong>Tú:</strong> ${userInput}</div>`;
+      input.value = "";
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      // Desactivar botón y mostrar "Bot escribiendo..."
+      sendBtn.disabled = true;
+      const typingMsg = document.createElement("div");
+      typingMsg.className = "typing";
+      typingMsg.id = "typing";
+      typingMsg.innerText = "Bot está escribiendo...";
+      chatbox.appendChild(typingMsg);
+      chatbox.scrollTop = chatbox.scrollHeight;
 
       try {
         const response = await fetch("/api/chat", {
@@ -124,21 +185,26 @@
           body: JSON.stringify({ message: userInput })
         });
 
-        if (!response.ok) {
-          throw new Error("Error HTTP " + response.status);
-        }
+        if (!response.ok) throw new Error("Error HTTP " + response.status);
 
         const data = await response.json();
-        chatbox.innerHTML += `<p class="bot-message"><strong>Bot:</strong> ${data.response}</p>`;
+
+        // Eliminar "Bot escribiendo..."
+        document.getElementById("typing")?.remove();
+
+        // Mostrar respuesta del bot
+        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ${data.response}</div>`;
       } catch (error) {
         console.error(error);
-        chatbox.innerHTML += `<p class="bot-message"><strong>Bot:</strong> Error al conectar con el servidor.</p>`;
+        document.getElementById("typing")?.remove();
+        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ❌ Error al conectar con el servidor.</div>`;
+      } finally {
+        sendBtn.disabled = false;
+        chatbox.scrollTop = chatbox.scrollHeight;
       }
-
-      chatbox.scrollTop = chatbox.scrollHeight;
-      document.getElementById("userInput").value = "";
     }
 
+    // Enviar con Enter
     document.getElementById("userInput").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -146,6 +212,7 @@
       }
     });
   </script>
+
   <!-- Bloque Generar Boletín -->
 <div class="container chat-panel" style="margin-top: 40px;">
   <img src="img/boletin.jpg" alt="Generar Boletín Image">
