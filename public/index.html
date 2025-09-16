@@ -114,7 +114,7 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       padding: 10px;
-      height: 300px;
+      height: 350px;
       overflow-y: auto;
       background-color: #fafafa;
       margin-bottom: 10px;
@@ -165,9 +165,41 @@
       background-color: #aaa;
       cursor: not-allowed;
     }
+    /* Estilo de secciones y listas en la respuesta del bot */
+    .bot-message h3 {
+      margin: 10px 0 5px;
+      color: #b22222; /* color rojo para títulos */
+    }
+    .bot-message ul {
+      margin: 5px 0 10px 20px;
+      padding: 0;
+    }
+    .bot-message li {
+      margin-bottom: 5px;
+    }
   </style>
 
   <script>
+    // Función para transformar el texto plano del boletín en HTML
+    function formatBotResponse(text) {
+      let html = text;
+
+      // Convertir títulos de sección === SECCIÓN === en h3
+      html = html.replace(/===\s*(.*?)\s*===/g, '<h3>📌 $1</h3>');
+
+      // Convertir guiones - en listas
+      // Primero envolvemos todos los ítems consecutivos en <ul>
+      html = html.replace(/(?:<h3>.*?<\/h3>\s*)?((?:- .*?(?:\n|$))+)/gs, function(match, group1) {
+        const items = group1.trim().split(/\n/).map(i => i.replace(/^- /, '').trim());
+        return '<ul>' + items.map(i => `<li>${i}</li>`).join('') + '</ul>';
+      });
+
+      // Mantener saltos de línea restantes
+      html = html.replace(/\n/g, "<br>");
+
+      return html;
+    }
+
     async function sendMessage() {
       const input = document.getElementById("userInput");
       const sendBtn = document.getElementById("sendBtn");
@@ -204,8 +236,8 @@
         // Eliminar "Bot escribiendo..."
         document.getElementById("typing")?.remove();
 
-        // Mostrar respuesta del bot con emojis y formato
-        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong> ${data.response}</div>`;
+        // Mostrar respuesta del bot formateada
+        chatbox.innerHTML += `<div class="bot-message"><strong>Bot:</strong><br>${formatBotResponse(data.response)}</div>`;
       } catch (error) {
         console.error(error);
         document.getElementById("typing")?.remove();
@@ -224,6 +256,7 @@
       }
     });
   </script>
+
 
   <!-- Bloque Generar Boletín -->
 <div class="container chat-panel" style="margin-top: 40px;">
