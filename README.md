@@ -1,16 +1,3 @@
 
-
-Using a react template for Frankie's Bakery 
-
-
----NOTE:
-Frankie's Bakery is a fictional business created for demonstrative purposes only , cambio tonto
-
-
----WEBSITE TEMPLATE---
-The original Author of the Template that is used came from the following two sources
-
-From Author template
-https://react-landing-page-template-93ne.vercel.app/#contact
-
-https://github.com/issaafalkattan/React-Landing-Page-Template/tree/master
+El sistema es una aplicación conversacional de IA diseñada para generar documentos de boletín estructurados a través de interacciones basadas en chat
+<img width="1902" height="63" alt="image" src="https://github.com/user-attachments/assets/29de95d1-7bcb-4d9c-91bb-a00e459359cb" />
