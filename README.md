@@ -43,21 +43,21 @@ Interfaz Frontend
 
 <img width="254" height="63" alt="image" src="https://github.com/user-attachments/assets/09a1e0c0-f7b2-4d31-9866-ce3d2daeebca" />
 Una aplicación de página única con múltiples áreas funcionales integradas en un documento HTML
-<img width="1250" height="63" alt="image" src="https://github.com/user-attachments/assets/e33ae01a-1e7a-418b-bd30-12c08d0bddf8" />
+>
 
 4. Funcionalidades Clave - Secciones de Boletín<img width="961" height="90" alt="image" src="https://github.com/user-attachments/assets/c671a748-50a0-4add-a7fe-b08edf383abc" />
 El sistema reconoce secciones predefinidas con nombres exactos para la generación de boletines
-<img width="1225" height="63" alt="image" src="https://github.com/user-attachments/assets/301bba4e-fe78-4d35-9180-1eb8495674da" />
+
 
 5. Tecnologías y Herramientas de Desarrollo<img width="889" height="90" alt="image" src="https://github.com/user-attachments/assets/4b0e8e9f-ffaf-4bf6-94fe-7f5767e08b7a" />
 
 Desarrollo local con Visual Studio Code y entornos virtuales Python , integrado con servicios Azure para una solución serverless completa.
-<img width="1729" height="63" alt="image" src="https://github.com/user-attachments/assets/5a016719-874f-4e39-8417-dfbefaed10d2" />
+
 
 6. Flujo de Despliegue CI/CD<img width="591" height="90" alt="image" src="https://github.com/user-attachments/assets/edbdc2e6-1ae7-4366-b220-f126222e61da" />
 
 Implementación de CI/CD con GitHub Actions para automatizar el despliegue desde el repositorio hacia los servicios en Azure
-<img width="1576" height="63" alt="image" src="https://github.com/user-attachments/assets/6c8d6dfa-2c18-447e-a4df-ab978941766f" />
+
 
 
 
