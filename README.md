@@ -10,10 +10,12 @@ Flujo de Despliegue CI/CD
 <img width="818" height="525" alt="image" src="https://github.com/user-attachments/assets/23719e16-0ac7-4141-9f5f-3b30ef034723" />
 
 1. Propósito del Sistema<img width="515" height="90" alt="image" src="https://github.com/user-attachments/assets/916af3b9-d2ae-4276-9fc7-89961685a44a" />
+
 https://orange-mud-0052bee03.4.azurestaticapps.net<img width="749" height="63" alt="image" src="https://github.com/user-attachments/assets/be677a72-34cc-45f6-8275-3ce17fe99a1a" />
 
 El sistema es una aplicación conversacional de IA diseñada para generar documentos de boletín estructurados a través de interacciones basadas en chat
 <img width="1902" height="63" alt="image" src="https://github.com/user-attachments/assets/29de95d1-7bcb-4d9c-91bb-a00e459359cb" />
+
 2. Arquitectura del Sistema<img width="565" height="90" alt="image" src="https://github.com/user-attachments/assets/c002b548-a104-4782-aa2f-0d1d87a1a43c" />
 
 La aplicación sigue un patrón de arquitectura serverless construido sobre Azure Static Web Apps .
