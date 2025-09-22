@@ -37,7 +37,8 @@ Componentes Principales:
 /api/generateword - Creación de documentos Word
 <img width="1357" height="307" alt="image" src="https://github.com/user-attachments/assets/1f679e85-3e7b-4e7a-883f-4475269b305f" />
 
-3. Componentes Principales
+3. Componentes Principales<img width="585" height="90" alt="image" src="https://github.com/user-attachments/assets/0e414036-f48a-4c62-830a-f96d69f90e93" />
+
 
 Interfaz Frontend
 
