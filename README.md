@@ -1,3 +1,14 @@
+Tabla de contenidos:
+
+Propósito del Sistema
+Arquitectura del Sistema
+Componentes Principales
+Funcionalidades Clave - Secciones de Boletín
+Tecnologías y Herramientas de Desarrollo
+Flujo de Despliegue CI/CD
+
+<img width="818" height="525" alt="image" src="https://github.com/user-attachments/assets/23719e16-0ac7-4141-9f5f-3b30ef034723" />
+
 1. Propósito del Sistema<img width="515" height="90" alt="image" src="https://github.com/user-attachments/assets/916af3b9-d2ae-4276-9fc7-89961685a44a" />
 https://orange-mud-0052bee03.4.azurestaticapps.net<img width="749" height="63" alt="image" src="https://github.com/user-attachments/assets/be677a72-34cc-45f6-8275-3ce17fe99a1a" />
 
