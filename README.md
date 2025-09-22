@@ -38,6 +38,7 @@ Componentes Principales:
 <img width="1357" height="307" alt="image" src="https://github.com/user-attachments/assets/1f679e85-3e7b-4e7a-883f-4475269b305f" />
 
 3. Componentes Principales<img width="585" height="90" alt="image" src="https://github.com/user-attachments/assets/712ebaaf-e6d3-430d-b663-10c79daa7012" />
+
 Interfaz Frontend
 <img width="254" height="63" alt="image" src="https://github.com/user-attachments/assets/09a1e0c0-f7b2-4d31-9866-ce3d2daeebca" />
 Una aplicación de página única con múltiples áreas funcionales integradas en un documento HTML
