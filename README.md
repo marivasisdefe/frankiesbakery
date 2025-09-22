@@ -55,6 +55,7 @@ Desarrollo local con Visual Studio Code y entornos virtuales Python , integrado
 <img width="1729" height="63" alt="image" src="https://github.com/user-attachments/assets/5a016719-874f-4e39-8417-dfbefaed10d2" />
 
 6. Flujo de Despliegue CI/CD<img width="591" height="90" alt="image" src="https://github.com/user-attachments/assets/edbdc2e6-1ae7-4366-b220-f126222e61da" />
+
 Implementación de CI/CD con GitHub Actions para automatizar el despliegue desde el repositorio hacia los servicios en Azure
 <img width="1576" height="63" alt="image" src="https://github.com/user-attachments/assets/6c8d6dfa-2c18-447e-a4df-ab978941766f" />
 
