@@ -5,9 +5,9 @@ require('dotenv').config();
 
 const app = express();
 
-const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
-const containerName = process.env.AZURE_CONTAINER_NAME;
+const accountName = os.getenv("AZURE_STORAGE_ACCOUNT_NAME");
+const accountKey = os.getenv("AZURE_STORAGE_ACCOUNT_KEY");
+const containerName = os.getenv("AZURE_CONTAINER_NAME");
 
 app.get('/api/getsasurl', async (req, res) => {
   try {
