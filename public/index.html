@@ -62,19 +62,17 @@
       <h2>Admin Panel</h2>
       <div id="upload-section">
         <h3>Upload Files</h3>
-        <form action="/upload" method="post" enctype="multipart/form-data">
           <div>
-            <input type="file" name="file" required>
+            <input type="file" name="file" id="fileInput" required>
           </div>
           <div>
-            <button type="submit">Upload File</button>
+            <button onclick="uploadToAzure()">Subir fichero</button>
           </div>
-        </form>
       </div>
       <hr>
       <div id="process-section">
         <h3>Process Files</h3>
-        <button onclick="processFiles()">Process Files</button>
+        <button onclick="processFiles()">Procesar contenido</button>
         <div id="spinner" style="display: none;">
           <img src="img/spinner.gif" alt="Loading..." />
         </div>
@@ -206,6 +204,33 @@
     html = html.replace(/\n/g, "<br>");
 
     return html;
+  }
+
+  async function uploadToAzure() {
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput.files.length === 0) return alert('Selecciona un archivo.');
+
+    const file = fileInput.files[0];
+
+    // 1. Obtener la URL SAS del backend
+    const resp = await fetch(`/api/getsasurl?filename=${encodeURIComponent(file.name)}`);
+    const data = await resp.json();
+    if (!data.uploadUrl) return alert('No se pudo obtener la URL de subida');
+
+    // 2. Subir el archivo a Azure Blob Storage usando la URL SAS
+    const putResp = await fetch(data.uploadUrl, {
+      method: 'PUT',
+      headers: {
+        'x-ms-blob-type': 'BlockBlob',
+        'Content-Type': file.type
+      },
+      body: file
+    });
+    if (putResp.ok) {
+      alert('Archivo subido correctamente');
+    } else {
+      alert('Error al subir el archivo');
+    }
   }
 
   async function sendMessage() {
