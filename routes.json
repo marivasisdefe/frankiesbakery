@@ -4,6 +4,10 @@
     {
       "route": "/api/chat",
       "allowedMethods": ["GET", "POST"]
+    },
+    {
+      "route": "/api/generateword",
+      "allowedMethods": ["GET", "POST"]
     }
   ]
 }
